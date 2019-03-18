@@ -121,12 +121,14 @@ img {
 #deal:focus {
 	outline: none;
 }
+
 #score {
 	display: inline-block;
 	width: 487px;
 	text-align: left;
 
 }
+
 #game-board {
 	margin-bottom: 16px;
 
