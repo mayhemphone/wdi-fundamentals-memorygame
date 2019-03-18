@@ -41,7 +41,10 @@ var clearBoard = function (){
 	createBoard();
 }
 
+
 var createBoard = function (){
+	//shuffle function call here
+	shuffle(cards);
 	for (var i = 0; i < cards.length; i++){
 		var cardElement = document.createElement('img');
 		//cardElement.setAttribute('cardNum', i);
@@ -56,6 +59,20 @@ var createBoard = function (){
 	}
 	document.getElementById("score").innerHTML ="<h1>" + wins + " matches so far!</h1>";
 
+}
+
+//fisher yates shuffle found on https://www.frankmitchell.org/2015/01/fisher-yates/
+var shuffle = function (array) {
+  var i = 0
+    , j = 0
+    , temp = null
+
+  for (i = array.length - 1; i > 0; i -= 1) {
+    j = Math.floor(Math.random() * (i + 1))
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
 }
 
 var checkForMatch = function (){
@@ -97,5 +114,5 @@ var flipCard = function () {
 
 
 //Create the board
-//createBoard();
+createBoard();
 
