@@ -14,8 +14,8 @@ var cards = [
 	{	
 		cardNum: 1,
 		rank: 'queen',
-		suit: 'diamonds',
-		cardImage: 'images/queen-of-diamonds.png'
+		suit: 'spades',
+		cardImage: 'images/queen-of-spades.png'
 	},
 	{	
 		cardNum: 2,
@@ -26,8 +26,8 @@ var cards = [
 	{	
 		cardNum: 3,
 		rank: 'king',
-		suit: 'diamonds',
-		cardImage: 'images/king-of-diamonds.png'
+		suit: 'spades',
+		cardImage: 'images/king-of-spades.png'
 	}
 ];
 
