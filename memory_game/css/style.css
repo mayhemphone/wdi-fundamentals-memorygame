@@ -106,4 +106,24 @@ img {
 	font-weight:700;
 }
 
+#deal {
+	border: none;
+	background-color: #F15B31;
+	color: white;
+	padding: 5px 20px;
+	font-size: 45px;
+	position: relative;
+	display: inline-block;
+	margin-right: 25px;
 
+}
+
+#deal:focus {
+	outline: none;
+}
+#score {
+	display: inline-block;
+	width: 487px;
+	text-align: left;
+
+}
