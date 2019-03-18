@@ -1,7 +1,9 @@
 console.log("Up and Running!");
 
+//keep track of successful matches
 var wins = 0;
 
+//these are the 4 cards and their info
 var cards = [
 	{	
 		cardNum: 0,
@@ -29,15 +31,19 @@ var cards = [
 	}
 ];
 
+//Selected cards array
 var cardsInPlay = [];
 
 var clearBoard = function (){
 
 	var myNode = document.getElementById("game-board");
 	while (myNode.firstChild) {
+    	//Removes the imgs
     	myNode.removeChild(myNode.firstChild);
 	}
+	//removes the cards from the selected array
 	cardsInPlay.length = 0;
+	//makes the board again
 	createBoard();
 }
 
@@ -46,14 +52,18 @@ var createBoard = function (){
 	//shuffle function call here
 	shuffle(cards);
 	for (var i = 0; i < cards.length; i++){
+		//creates the img element, then sets all of the attributes
 		var cardElement = document.createElement('img');
-		//cardElement.setAttribute('cardNum', i);
+		//sets them all to the back img
 		cardElement.setAttribute('src', 'images/back.png');
+		//pulls attributes for each card from the corresponding cards array
 		cardElement.setAttribute('cardNum', cards[i].cardNum);
 		cardElement.setAttribute('rank', cards[i].rank);
 		cardElement.setAttribute('suit', cards[i].suit);
 		cardElement.setAttribute('cardImage', cards[i].cardImage);
+		//set click event
 		cardElement.addEventListener("click", flipCard);
+		//inserts the img element into html
 		document.getElementById("game-board").appendChild(cardElement);
 		console.log(cardElement);
 	}
