@@ -57,8 +57,13 @@ var createBoard = function (){
 		document.getElementById("game-board").appendChild(cardElement);
 		console.log(cardElement);
 	}
-	document.getElementById("score").innerHTML ="<h1>" + wins + " matches so far!</h1>";
-
+	if (wins === 1){
+		//singular message
+		document.getElementById("score").innerHTML ="<h1>" + wins + " match so far!</h1>";
+	} else{
+		//plural message
+		document.getElementById("score").innerHTML ="<h1>" + wins + " matches so far!</h1>";
+};
 }
 
 //fisher yates shuffle found on https://www.frankmitchell.org/2015/01/fisher-yates/
