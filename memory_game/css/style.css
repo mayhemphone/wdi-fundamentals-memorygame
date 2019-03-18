@@ -141,3 +141,9 @@ img {
 	margin-bottom: 16px;
 
 }
+.fadedImage {
+	-webkit-filter:contrast(40%);
+    -moz-filter:contrast(40%);
+    filter: url(#contrast);
+    filter:contrast(40%);
+}

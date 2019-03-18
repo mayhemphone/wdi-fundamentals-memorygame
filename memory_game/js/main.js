@@ -6,24 +6,28 @@ var wins = 0;
 //these are the 4 cards and their info
 var cards = [
 	{	
+		//card-Id: 0, could put in quotes to make work
 		cardNum: 0,
 		rank: 'queen',
 		suit: 'hearts',
 		cardImage: 'images/queen-of-hearts.png'
 	},
 	{	
+		//card-Id: 1,  
 		cardNum: 1,
 		rank: 'queen',
 		suit: 'spades',
 		cardImage: 'images/queen-of-spades.png'
 	},
 	{	
+		//card-Id: 2,
 		cardNum: 2,
 		rank: 'king',
 		suit: 'hearts',
 		cardImage: 'images/king-of-hearts.png'
 	},
 	{	
+		//card-Id: 3,
 		cardNum: 3,
 		rank: 'king',
 		suit: 'spades',
@@ -124,7 +128,12 @@ var flipCard = function () {
 	if (cardsInPlay.length === 2){
 		console.log("The two cards are: " + cardsInPlay[0] + ", and a " + cardsInPlay[1]);
 		checkForMatch();
+	} else if (cardsInPlay.length >= 2){
+		console.log ("Already flipped two cards, lets dim the next two")
+		this.className ="fadedImage";
+
 	}
+
 };
 
 
