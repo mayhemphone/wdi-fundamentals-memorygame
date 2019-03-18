@@ -24,7 +24,8 @@ nav a {
 }
 
 main {
-	width:850px;
+	
+	
 	margin:35px auto;
 }
 
@@ -62,6 +63,8 @@ p {
 	font-family: "Droid Serif", serif;
 	line-height: 26px;
 	font-size: 18px;
+	max-width:750px;
+	margin:0 auto;
 }
 
 a {
@@ -127,6 +130,10 @@ img {
 	width: 487px;
 	text-align: left;
 
+}
+
+#score h1 {
+	color:#0d2c40;
 }
 
 #game-board {
