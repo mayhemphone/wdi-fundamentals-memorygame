@@ -1,5 +1,10 @@
 console.log("Up and Running!");
 
+//track cards left?
+var cardsLeft = [];
+
+console.log ("cardsLeft: ");
+console.log (cardsLeft);
 //keep track of successful matches
 var wins = 0;
 
@@ -47,8 +52,10 @@ var clearBoard = function (){
 	}
 	//removes the cards from the selected array
 	cardsInPlay.length = 0;
+
 	//makes the board again
 	createBoard();
+	cardsLeft = cards.slice(0);
 }
 
 
@@ -62,6 +69,7 @@ var createBoard = function (){
 		cardElement.setAttribute('src', 'images/back.png');
 		//pulls attributes for each card from the corresponding cards array
 		cardElement.setAttribute('cardNum', cards[i].cardNum);
+		cardElement.setAttribute('id', "card" + cards[i].cardNum)
 		cardElement.setAttribute('rank', cards[i].rank);
 		cardElement.setAttribute('suit', cards[i].suit);
 		cardElement.setAttribute('cardImage', cards[i].cardImage);
@@ -70,6 +78,12 @@ var createBoard = function (){
 		//inserts the img element into html
 		document.getElementById("game-board").appendChild(cardElement);
 		console.log(cardElement);
+
+		//track cards left?
+		cardsLeft = cards.slice(0);
+
+console.log ("cardsLeft: ");
+console.log (cardsLeft);
 	}
 	if (wins === 1){
 		//singular message
@@ -77,6 +91,7 @@ var createBoard = function (){
 	} else{
 		//plural message
 		document.getElementById("score").innerHTML ="<h1>" + wins + " matches so far!</h1>";
+
 };
 }
 
@@ -102,7 +117,8 @@ var checkForMatch = function (){
 		//save score
 		wins = wins + 1
 		document.getElementById("score").innerHTML ="<h1 style='color:green;'>YOU MATCHED!</h1>";
-		
+		//grey out cardsLeft
+
 		
 
 	} else {
@@ -111,26 +127,53 @@ var checkForMatch = function (){
 	}
 
 };
+var flipRemaining = function (){
+
+		for (i = 0; i < cards.length; i++){
+			
+			console.log ("card" + i);
+			document.getElementById("card"+i).src=cards[i].cardImage;
+	}
+		for (i = 0; i < cardsLeft.length; i++){
+			console.log("loop card"+cardsLeft[i].cardNum)
+			document.getElementById("card"+cardsLeft[i].cardNum).index ="fadedImage";
+			//cardsLeft.cardNum
+		}
+
+}
 
 var flipCard = function () {
 	//id the card
 	var cardId = this.getAttribute('cardNum');
 	//alert(cardsInPlay.length + 1);
-	console.log ("User flipped " + cards[cardId].rank + " of " + cards[cardId].suit);
+	console.log ("User flipped " + cards[cardId].cardNum + " - " + cards[cardId].rank + " of " + cards[cardId].suit);
 
 	//push that card to the in play array
 	cardsInPlay.push(cards[cardId].rank);
-
+	console.log(cards[cardId].cardNum);
+	
+	//delete that card in the cardsleft array
+	cardsLeft.splice(cardId, 1);
+	console.log("cardsLeft is now:");
+	console.log(cardsLeft);
+	
 	//show face
 	this.setAttribute('src', cards[cardId].cardImage);
+
 
 	//check the cards
 	if (cardsInPlay.length === 2){
 		console.log("The two cards are: " + cardsInPlay[0] + ", and a " + cardsInPlay[1]);
+		//check for a match
 		checkForMatch();
+		
+		//show remaining faces
+		flipRemaining();
+
+		
 	} else if (cardsInPlay.length >= 2){
-		console.log ("Already flipped two cards, lets dim the next two")
-		this.className ="fadedImage";
+		// console.log ("Already flipped two cards, lets dim the next two")
+		// this.className ="fadedImage";
 
 	}
 
